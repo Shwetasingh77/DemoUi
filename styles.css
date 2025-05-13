@@ -1,0 +1,403 @@
+
+/* Global Styles - Dark Mode (Default) */
+:root {
+    --primary: #6B48FF;
+    --secondary: #FF2E63;
+    --background: #1E40AF;
+    --card-bg: #2D2A5E;
+    --text-primary: #FFFFFF;
+    --text-secondary: #FFFFFF;
+    --success: #34D399;
+    --error: #F87171;
+    --nav-footer-bg: #1E3A8A;
+    --form-bg: rgba(255, 255, 255, 0.1);
+    --form-bg-focus: rgba(255, 255, 255, 0.2);
+    --shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+}
+
+/* Light Mode Overrides */
+.light-theme {
+    --background: #F3F4F6;
+    --card-bg: #FFFFFF;
+    --text-primary: #1F2937;
+    --text-secondary: #1F2937;
+    --nav-footer-bg: #E5E7EB;
+    --form-bg: rgba(0, 0, 0, 0.05);
+    --form-bg-focus: rgba(0, 0, 0, 0.1);
+    --shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+}
+
+body {
+    background: var(--background);
+    color: var(--text-primary);
+    font-family: 'Poppins', sans-serif;
+    font-weight: 400;
+    line-height: 1.6;
+    letter-spacing: 0.01em;
+    margin: 0;
+    padding: 0;
+    transition: background 0.3s ease, color 0.3s ease;
+}
+
+/* Headings */
+h1, h2, h3, h4, h5, h6 {
+    font-weight: 700;
+    line-height: 1.2;
+    letter-spacing: 0.02em;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+    color: var(--text-primary); /* Ensure headings are white in dark mode */
+}
+
+h1.display-3 {
+    font-size: 3.5rem;
+}
+
+h2 {
+    font-size: 2.25rem;
+}
+
+/* Navbar */
+.navbar {
+    background: linear-gradient(135deg, var(--nav-footer-bg), #1E40AF);
+    backdrop-filter: blur(10px);
+    padding: 1rem 0;
+}
+
+.light-theme .navbar {
+    background: linear-gradient(135deg, var(--nav-footer-bg), #D1D5DB);
+}
+
+.navbar-brand, .nav-link {
+    color: var(--text-primary) !important;
+    margin: 0 1.5rem;
+    font-weight: 400;
+    font-size: 1rem;
+    transition: color 0.3s ease, transform 0.3s ease;
+}
+
+.navbar-brand {
+    font-weight: 600;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+.nav-link:hover {
+    color: var(--secondary) !important;
+    transform: scale(1.1);
+}
+
+.nav-link.active {
+    color: var(--primary) !important;
+    font-weight: 600;
+}
+
+.navbar-toggler-icon {
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3E%3Cpath stroke='rgba(255, 255, 255, 0.8)' stroke-width='2' stroke-linecap='round' stroke-miterlimit='10' d='M4 7h22M4 15h22M4 23h22'/%3E%3C/svg%3E");
+}
+
+.light-theme .navbar-toggler-icon {
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3E%3Cpath stroke='rgba(31, 41, 55, 0.8)' stroke-width='2' stroke-linecap='round' stroke-miterlimit='10' d='M4 7h22M4 15h22M4 23h22'/%3E%3C/svg%3E");
+}
+
+/* Hero Section */
+.hero-section {
+    position: relative;
+    padding: 6rem 0;
+    overflow: hidden;
+}
+
+#particles-js {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(30, 64, 175, 0.3);
+    z-index: 0;
+}
+
+.light-theme #particles-js {
+    background: rgba(0, 0, 0, 0.05);
+}
+
+.hero-section h1 {
+    font-weight: 700;
+    color: var(--text-primary);
+}
+
+.hero-section .lead {
+    color: var(--text-primary);
+    font-weight: 500;
+    font-size: 1.25rem;
+}
+
+/* Cards */
+.card {
+    background: var(--card-bg);
+    border: none;
+    border-radius: 15px;
+    box-shadow: var(--shadow);
+    margin: 2rem auto;
+    padding: 2rem;
+    position: relative;
+    overflow: hidden;
+}
+
+.card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border-radius: 15px;
+    border: 2px solid transparent;
+    background: linear-gradient(135deg, var(--primary), var(--secondary)) border-box;
+    -webkit-mask: linear-gradient(#fff 0 0) padding-box, linear-gradient(#fff 0 0);
+    -webkit-mask-composite: destination-out;
+    mask-composite: exclude;
+}
+
+/* Ensure all text inside cards is white in dark mode */
+.card * {
+    color: var(--text-primary);
+}
+
+/* Forms (Login, Register Pages) */
+.form-control {
+    background: var(--form-bg);
+    border: 1px solid var(--text-primary);
+    color: var(--text-primary);
+    border-radius: 8px;
+    padding: 0.75rem 2.5rem;
+    font-weight: 400;
+    font-size: 1rem;
+}
+
+.form-control:focus {
+    background: var(--form-bg-focus);
+    border-color: var(--primary);
+    box-shadow: 0 0 10px rgba(107, 72, 255, 0.3);
+    color: var(--text-primary);
+}
+
+/* Placeholder text for inputs */
+.form-control::placeholder {
+    color: var(--text-primary);
+    opacity: 0.7;
+}
+
+.form-label {
+    color: var(--text-primary);
+    font-weight: 500;
+    font-size: 1rem;
+}
+
+.floating-label {
+    position: absolute;
+    top: 0.75rem;
+    left: 2.5rem;
+    color: var(--text-primary);
+    font-weight: 400;
+    transition: all 0.2s ease;
+    pointer-events: none;
+}
+
+.form-control:focus ~ .floating-label,
+.form-control:not(:placeholder-shown) ~ .floating-label {
+    top: -0.5rem;
+    left: 1rem;
+    font-size: 0.875rem;
+    font-weight: 300;
+    color: var(--primary);
+    background: var(--card-bg);
+    padding: 0 0.25rem;
+}
+
+.input-icon {
+    position: absolute;
+    top: 50%;
+    left: 0.75rem;
+    transform: translateY(-50%);
+    color: var(--text-primary);
+}
+
+/* Symptom Grid (Dashboard Page) */
+.symptom-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    gap: 1rem;
+    margin-top: 1rem;
+}
+
+.form-check-input {
+    background-color: var(--form-bg);
+    border-color: var(--text-primary);
+}
+
+.form-check-input:checked {
+    background-color: var(--primary);
+    border-color: var(--primary);
+}
+
+.form-check-label {
+    color: var(--text-primary);
+    font-weight: 400;
+    font-size: 1rem;
+    cursor: pointer;
+}
+
+.form-check-label:hover {
+    color: var(--secondary);
+}
+
+/* Buttons */
+.btn-primary {
+    background: var(--primary);
+    border: none;
+    border-radius: 8px;
+    padding: 0.75rem;
+    font-weight: 500;
+    font-size: 1rem;
+    color: #FFFFFF; /* Always white text for buttons */
+    transition: background 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.btn-primary:hover {
+    background: var(--secondary);
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(255, 46, 99, 0.3);
+}
+
+.btn-outline-light {
+    border-color: var(--text-primary);
+    color: var(--text-primary);
+    font-weight: 400;
+}
+
+.btn-outline-light:hover {
+    background: var(--primary);
+    color: #FFFFFF; /* Ensure button text remains white on hover */
+    border-color: var(--primary);
+}
+
+/* Footer (All Pages) */
+footer {
+    background: linear-gradient(135deg, var(--nav-footer-bg), #1E40AF);
+    padding: 2rem 0;
+}
+
+.light-theme footer {
+    background: linear-gradient(135deg, var(--nav-footer-bg), #D1D5DB);
+}
+
+footer p {
+    font-weight: 300;
+    font-size: 0.875rem;
+    color: var(--text-primary); /* Ensure footer text is white in dark mode */
+}
+
+.wave-footer {
+    width: 100%;
+    height: 50px;
+    background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1440 320'%3E%3Cpath fill='%231E3A8A' fill-opacity='1' d='M0,160L48,176C96,192,192,224,288,213.3C384,203,480,149,576,144C672,139,768,181,864,197.3C960,213,1056,203,1152,181.3C1248,160,1344,128,1392,112L1440,96L1440,0L1392,0C1344,0,1248,0,1152,0C1056,0,960,0,864,0C768,0,672,0,576,0C480,0,384,0,288,0C192,0,96,0,48,0L0,0Z'%3E%3C/path%3E%3C/svg%3E") no-repeat bottom;
+    background-size: cover;
+}
+
+.light-theme .wave-footer {
+    background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1440 320'%3E%3Cpath fill='%23E5E7EB' fill-opacity='1' d='M0,160L48,176C96,192,192,224,288,213.3C384,203,480,149,576,144C672,139,768,181,864,197.3C960,213,1056,203,1152,181.3C1248,160,1344,128,1392,112L1440,96L1440,0L1392,0C1344,0,1248,0,1152,0C1056,0,960,0,864,0C768,0,672,0,576,0C480,0,384,0,288,0C192,0,96,0,48,0L0,0Z'%3E%3C/path%3E%3C/svg%3E") no-repeat bottom;
+}
+
+.social-icons a {
+    color: var(--text-primary);
+    font-size: 1.5rem;
+    margin: 0 1rem;
+    transition: color 0.3s ease, transform 0.3s ease;
+}
+
+.social-icons a:hover {
+    color: var(--secondary);
+    transform: scale(1.2);
+}
+
+/* Links */
+a {
+    color: var(--primary);
+    text-decoration: none;
+    font-weight: 400;
+    transition: color 0.3s ease;
+}
+
+a:hover {
+    color: var(--secondary);
+}
+
+/* Text */
+p {
+    font-weight: 400;
+    font-size: 1rem;
+    color: var(--text-primary); /* Ensure all paragraphs are white in dark mode */
+}
+
+/* Error and Success Messages (Login, Register Pages) */
+.text-danger {
+    color: var(--error) !important;
+}
+
+.text-success {
+    color: var(--success) !important;
+}
+
+/* Ensure error/success messages inside cards are white in dark mode, unless overridden */
+.card .text-danger,
+.card .text-success {
+    color: var(--text-primary);
+}
+
+.card .text-danger {
+    color: var(--error) !important;
+}
+
+.card .text-success {
+    color: var(--success) !important;
+}
+
+/* Responsive Adjustments */
+@media (max-width: 768px) {
+    .navbar-brand, .nav-link {
+        margin: 0 0.5rem;
+    }
+
+    .hero-section {
+        padding: 4rem 0;
+    }
+
+    h1.display-3 {
+        font-size: 2.5rem;
+    }
+
+    h2 {
+        font-size: 1.75rem;
+    }
+
+    .card {
+        padding: 1.5rem;
+    }
+
+    .symptom-grid {
+        grid-template-columns: 1fr 1fr;
+    }
+}
+
+@media (max-width: 576px) {
+    .symptom-grid {
+        grid-template-columns: 1fr;
+    }
+
+    h1.display-3 {
+        font-size: 2rem;
+    }
+
+    h2 {
+        font-size: 1.5rem;
+    }
+}
