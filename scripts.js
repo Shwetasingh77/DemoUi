@@ -1,34 +1,59 @@
-// Theme Toggle with Local Storage
 const themeToggle = document.getElementById('themeToggle');
 
-// Load theme from localStorage
+// Load theme preference from localStorage
 const savedTheme = localStorage.getItem('theme');
-if (savedTheme === 'light') {
-    document.body.classList.add('light-theme');
-    themeToggle.innerHTML = '<i class="fas fa-moon"></i>';
+
+// Default to light mode unless 'dark' is stored
+if (savedTheme === 'dark') {
+    document.body.classList.add('dark-theme');
+    themeToggle.innerHTML = '<i class="fas fa-sun"></i>'; // Show sun (light mode)
 } else {
-    themeToggle.innerHTML = '<i class="fas fa-sun"></i>';
+    // Light mode by default
+    document.body.classList.remove('dark-theme');
+    themeToggle.innerHTML = '<i class="fas fa-moon"></i>'; // Show moon (dark mode)
 }
 
 themeToggle.addEventListener('click', () => {
-    document.body.classList.toggle('light-theme');
-    const isLightTheme = document.body.classList.contains('light-theme');
-    themeToggle.innerHTML = isLightTheme
-        ? '<i class="fas fa-moon"></i>'
-        : '<i class="fas fa-sun"></i>';
-    localStorage.setItem('theme', isLightTheme ? 'light' : 'dark');
+    document.body.classList.toggle('dark-theme');
+    const isDarkTheme = document.body.classList.contains('dark-theme');
+
+    themeToggle.innerHTML = isDarkTheme
+        ? '<i class="fas fa-sun"></i>'  // Show sun when in dark mode
+        : '<i class="fas fa-moon"></i>'; // Show moon when in light mode
+
+    localStorage.setItem('theme', isDarkTheme ? 'dark' : 'light');
 });
+
+const toggleThemeBtn = document.getElementById('theme-toggle');
+
+// Check localStorage on page load
+if (localStorage.getItem('theme') === 'dark') {
+    document.body.classList.add('dark-theme');
+}
+
+// Toggle theme on button click
+toggleThemeBtn.addEventListener('click', () => {
+    document.body.classList.toggle('dark-theme');
+
+    // Store preference
+    if (document.body.classList.contains('dark-theme')) {
+        localStorage.setItem('theme', 'dark');
+    } else {
+        localStorage.setItem('theme', 'light');
+    }
+});
+
 
 // Particles.js for Hero Section
 if (document.getElementById('particles-js')) {
     particlesJS('particles-js', {
         particles: {
             number: { value: 80, density: { enable: true, value_area: 800 } },
-            color: { value: document.body.classList.contains('light-theme') ? '#1F2937' : '#A5B4FC' },
+            color: { value: document.body.classList.contains('dark-theme') ? '#A5B4FC' : '#1F2937' },
             shape: { type: 'circle' },
             opacity: { value: 0.5, random: true },
             size: { value: 3, random: true },
-            line_linked: { enable: true, distance: 150, color: document.body.classList.contains('light-theme') ? '#1F2937' : '#A5B4FC', opacity: 0.4, width: 1 },
+            line_linked: { enable: true, distance: 150, color: document.body.classList.contains('dark-theme') ? '#A5B4FC' : '#1F2937', opacity: 0.4, width: 1 },
             move: { enable: true, speed: 2, direction: 'none', random: false, straight: false, out_mode: 'out', bounce: false }
         },
         interactivity: {
@@ -70,16 +95,6 @@ if (registerForm) {
             errorDiv.classList.remove('text-danger');
             errorDiv.classList.add('text-success');
         }, 1000);
-    });
-}
-
-// Ensure the login link is not affected by any event listeners
-const loginLink = document.querySelector('.login-link');
-if (loginLink) {
-    loginLink.addEventListener('click', (e) => {
-        // Allow default behavior (navigation to login.html)
-        // No e.preventDefault() here
-        console.log('Login link clicked, navigating to login.html');
     });
 }
 
