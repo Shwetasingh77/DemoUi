@@ -1,6 +1,4 @@
 /* Global Styles - Light Mode (Default) */
-
-
 :root {
     --primary: #6B48FF;
     --secondary: #FF2E63;
@@ -46,7 +44,7 @@ h1, h2, h3, h4, h5, h6 {
     line-height: 1.2;
     letter-spacing: 0.02em;
     text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
-    color: var(--text-primary); /* Text color switches based on theme */
+    color: var(--text-primary);
 }
 
 h1.display-3 {
@@ -59,13 +57,13 @@ h2 {
 
 /* Navbar */
 .navbar {
-    background: linear-gradient(135deg, var(--nav-footer-bg), #D1D5DB); /* Light mode default */
+    background: linear-gradient(135deg, var(--nav-footer-bg), #D1D5DB);
     backdrop-filter: blur(10px);
     padding: 1rem 0;
 }
 
 .dark-theme .navbar {
-    background: linear-gradient(135deg, var(--nav-footer-bg), #1E40AF); /* Dark mode override */
+    background: linear-gradient(135deg, var(--nav-footer-bg), #1E40AF);
 }
 
 .navbar-brand, .nav-link {
@@ -92,11 +90,11 @@ h2 {
 }
 
 .navbar-toggler-icon {
-    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3E%3Cpath stroke='rgba(31, 41, 55, 0.8)' stroke-width='2' stroke-linecap='round' stroke-miterlimit='10' d='M4 7h22M4 15h22M4 23h22'/%3E%3C/svg%3E"); /* Light mode default */
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3E%3Cpath stroke='rgba(31, 41, 55, 0.8)' stroke-width='2' stroke-linecap='round' stroke-miterlimit='10' d='M4 7h22M4 15h22M4 23h22'/%3E%3C/svg%3E");
 }
 
 .dark-theme .navbar-toggler-icon {
-    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3E%3Cpath stroke='rgba(255, 255, 255, 0.8)' stroke-width='2' stroke-linecap='round' stroke-miterlimit='10' d='M4 7h22M4 15h22M4 23h22'/%3E%3C/svg%3E"); /* Dark mode override */
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3E%3Cpath stroke='rgba(255, 255, 255, 0.8)' stroke-width='2' stroke-linecap='round' stroke-miterlimit='10' d='M4 7h22M4 15h22M4 23h22'/%3E%3C/svg%3E");
 }
 
 /* Hero Section */
@@ -112,12 +110,12 @@ h2 {
     left: 0;
     width: 100%;
     height: 100%;
-    background: rgba(0, 0, 0, 0.05); /* Light mode default */
+    background: rgba(0, 0, 0, 0.05);
     z-index: 0;
 }
 
 .dark-theme #particles-js {
-    background: rgba(30, 64, 175, 0.3); /* Dark mode override */
+    background: rgba(30, 64, 175, 0.3);
 }
 
 .hero-section h1 {
@@ -141,6 +139,8 @@ h2 {
     padding: 2rem;
     position: relative;
     overflow: hidden;
+    z-index: 1 !important;
+    opacity: 1 !important;
 }
 
 .card::before {
@@ -156,16 +156,14 @@ h2 {
     -webkit-mask: linear-gradient(#fff 0 0) padding-box, linear-gradient(#fff 0 0);
     -webkit-mask-composite: destination-out;
     mask-composite: exclude;
-    pointer-events: none; /* ✅ add this line */
+    pointer-events: none;
 }
 
-
-/* Ensure all text inside cards follows the theme */
 .card * {
     color: var(--text-primary);
 }
 
-/* Forms (Login, Register Pages) */
+/* Forms (Login, Register, Dashboard Pages) */
 .form-control {
     background: var(--form-bg);
     border: 1px solid var(--text-primary);
@@ -174,6 +172,9 @@ h2 {
     padding: 0.75rem 2.5rem;
     font-weight: 400;
     font-size: 1rem;
+    pointer-events: auto !important;
+    z-index: 10 !important;
+    opacity: 1 !important;
 }
 
 .form-control:focus {
@@ -183,7 +184,6 @@ h2 {
     color: var(--text-primary);
 }
 
-/* Placeholder text for inputs */
 .form-control::placeholder {
     color: var(--text-primary);
     opacity: 0.7;
@@ -203,6 +203,7 @@ h2 {
     font-weight: 400;
     transition: all 0.2s ease;
     pointer-events: none;
+    font-family: 'Poppins', sans-serif;
 }
 
 .form-control:focus ~ .floating-label,
@@ -216,14 +217,19 @@ h2 {
     padding: 0 0.25rem;
 }
 
-
 .input-icon {
     position: absolute;
     top: 50%;
     left: 0.75rem;
     transform: translateY(-50%);
     color: var(--text-primary);
-      pointer-events: none;
+    pointer-events: none;
+}
+
+/* Textarea (Dashboard Page) */
+textarea.form-control {
+    resize: vertical;
+    min-height: 100px;
 }
 
 /* Symptom Grid (Dashboard Page) */
@@ -256,6 +262,12 @@ h2 {
 }
 
 /* Buttons */
+.btn {
+    pointer-events: auto !important;
+    cursor: pointer !important;
+    z-index: 10 !important;
+}
+
 .btn-primary {
     background: var(--primary);
     border: none;
@@ -263,14 +275,25 @@ h2 {
     padding: 0.75rem;
     font-weight: 500;
     font-size: 1rem;
-    color: #FFFFFF; /* Always white text for buttons */
+    color: #FFFFFF !important; /* Always white text for buttons */
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.2); /* Improve visibility in light mode */
     transition: background 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
 }
 
 .btn-primary:hover {
     background: var(--secondary);
+    color: #FFFFFF !important;
     transform: translateY(-2px);
     box-shadow: 0 5px 15px rgba(255, 46, 99, 0.3);
+}
+
+.dark-theme .btn-primary {
+    text-shadow: none; /* Remove shadow in dark mode for cleaner look */
+}
+
+.btn-primary:disabled {
+    pointer-events: none !important;
+    opacity: 0.65 !important;
 }
 
 .btn-outline-light {
@@ -281,35 +304,35 @@ h2 {
 
 .btn-outline-light:hover {
     background: var(--primary);
-    color: #FFFFFF; /* Ensure button text remains white on hover */
+    color: #FFFFFF !important;
     border-color: var(--primary);
 }
 
 /* Footer (All Pages) */
 footer {
-    background: linear-gradient(135deg, var(--nav-footer-bg), #D1D5DB); /* Light mode default */
+    background: linear-gradient(135deg, var(--nav-footer-bg), #D1D5DB);
     padding: 2rem 0;
 }
 
 .dark-theme footer {
-    background: linear-gradient(135deg, var(--nav-footer-bg), #1E40AF); /* Dark mode override */
+    background: linear-gradient(135deg, var(--nav-footer-bg), #1E40AF);
 }
 
 footer p {
     font-weight: 300;
     font-size: 0.875rem;
-    color: var(--text-primary); /* Follows theme */
+    color: var(--text-primary);
 }
 
 .wave-footer {
     width: 100%;
     height: 50px;
-    background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1440 320'%3E%3Cpath fill='%23E5E7EB' fill-opacity='1' d='M0,160L48,176C96,192,192,224,288,213.3C384,203,480,149,576,144C672,139,768,181,864,197.3C960,213,1056,203,1152,181.3C1248,160,1344,128,1392,112L1440,96L1440,0L1392,0C1344,0,1248,0,1152,0C1056,0,960,0,864,0C768,0,672,0,576,0C480,0,384,0,288,0C192,0,96,0,48,0L0,0Z'%3E%3C/path%3E%3C/svg%3E") no-repeat bottom; /* Light mode default */
+    background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1440 320'%3E%3Cpath fill='%23E5E7EB' fill-opacity='1' d='M0,160L48,176C96,192,192,224,288,213.3C384,203,480,149,576,144C672,139,768,181,864,197.3C960,213,1056,203,1152,181.3C1248,160,1344,128,1392,112L1440,96L1440,0L1392,0C1344,0,1248,0,1152,0C1056,0,960,0,864,0C768,0,672,0,576,0C480,0,384,0,288,0C192,0,96,0,48,0L0,0Z'%3E%3C/path%3E%3C/svg%3E") no-repeat bottom;
     background-size: cover;
 }
 
 .dark-theme .wave-footer {
-    background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1440 320'%3E%3Cpath fill='%231E3A8A' fill-opacity='1' d='M0,160L48,176C96,192,192,224,288,213.3C384,203,480,149,576,144C672,139,768,181,864,197.3C960,213,1056,203,1152,181.3C1248,160,1344,128,1392,112L1440,96L1440,0L1392,0C1344,0,1248,0,1152,0C1056,0,960,0,864,0C768,0,672,0,576,0C480,0,384,0,288,0C192,0,96,0,48,0L0,0Z'%3E%3C/path%3E%3C/svg%3E") no-repeat bottom; /* Dark mode override */
+    background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1440 320'%3E%3Cpath fill='%231E3A8A' fill-opacity='1' d='M0,160L48,176C96,192,192,224,288,213.3C384,203,480,149,576,144C672,139,768,181,864,197.3C960,213,1056,203,1152,181.3C1248,160,1344,128,1392,112L1440,96L1440,0L1392,0C1344,0,1248,0,1152,0C1056,0,960,0,864,0C768,0,672,0,576,0C480,0,384,0,288,0C192,0,96,0,48,0L0,0Z'%3E%3C/path%3E%3C/svg%3E") no-repeat bottom;
 }
 
 .social-icons a {
@@ -325,14 +348,17 @@ footer p {
 }
 
 /* Links */
-a {
+a, .login-link, .register-link {
     color: var(--primary);
-    text-decoration: none;
+    text-decoration: underline;
     font-weight: 400;
     transition: color 0.3s ease;
+    pointer-events: auto !important;
+    cursor: pointer !important;
+    z-index: 10 !important;
 }
 
-a:hover {
+a:hover, .login-link:hover, .register-link:hover {
     color: var(--secondary);
 }
 
@@ -340,7 +366,7 @@ a:hover {
 p {
     font-weight: 400;
     font-size: 1rem;
-    color: var(--text-primary); /* Follows theme */
+    color: var(--text-primary);
 }
 
 /* Error and Success Messages (Login, Register Pages) */
@@ -352,7 +378,6 @@ p {
     color: var(--success) !important;
 }
 
-/* Ensure error/success messages inside cards follow the theme */
 .card .text-danger,
 .card .text-success {
     color: var(--text-primary);
@@ -364,6 +389,21 @@ p {
 
 .card .text-success {
     color: var(--success) !important;
+}
+
+/* Dark Theme Overrides for Forms and Links */
+.dark-theme .form-control,
+.dark-theme textarea.form-control {
+    background: var(--form-bg);
+    color: var(--text-primary);
+    border-color: var(--text-primary);
+}
+
+.dark-theme .form-control:focus,
+.dark-theme textarea.form-control:focus {
+    background: var(--form-bg-focus);
+    border-color: var(--primary);
+    box-shadow: 0 0 10px rgba(107, 72, 255, 0.3);
 }
 
 /* Responsive Adjustments */
@@ -405,87 +445,4 @@ p {
     h2 {
         font-size: 1.5rem;
     }
-}
-/* Textarea styles */
-textarea.form-control {
-    resize: vertical;
-    pointer-events: auto !important;
-    user-select: text !important;
-    cursor: text !important;
-    z-index: 10 !important;
-    min-height: 100px;
-    opacity: 1 !important;
-    background-color: #fff;
-    border: 1px solid #ced4da;
-    padding: 10px;
-}
-
-textarea.form-control:focus {
-    outline: none;
-    box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
-    border-color: #80bdff;
-}
-
-/* Input fields */
-.form-control {
-    pointer-events: auto !important;
-    z-index: 10 !important;
-    opacity: 1 !important;
-}
-
-.form-control:focus {
-    outline: none;
-    box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
-    border-color: #80bdff;
-}
-
-/* Links */
-a, .login-link {
-    pointer-events: auto !important;
-    cursor: pointer !important;
-    text-decoration: underline;
-    color: #007bff !important;
-    z-index: 10 !important;
-}
-
-
-
-a:hover, .login-link:hover {
-    color: #0056b3 !important;
-    text-decoration: none;
-}
-
-/* Buttons */
-.btn {
-    pointer-events: auto !important;
-    cursor: pointer !important;
-    z-index: 10 !important;
-}
-
-/* Form container */
-.card, .mb-4 {
-    position: relative;
-    z-index: 1;
-}
-
-/* Dark theme */
-.dark-theme textarea.form-control,
-.dark-theme .form-control {
-    background-color: #2d3748 !important;
-    color: #e2e8f0 !important;
-    border-color: #4a5568 !important;
-}
-
-.dark-theme a,
-.dark-theme .login-link {
-    color: #4dabf7 !important;
-}
-
-.dark-theme a:hover,
-.dark-theme .login-link:hover {
-    color: #339af0 !important;
-}
-.login-link {
-    pointer-events: auto;
-    cursor: pointer;
 }
