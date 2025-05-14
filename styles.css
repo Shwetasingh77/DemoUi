@@ -156,7 +156,9 @@ h2 {
     -webkit-mask: linear-gradient(#fff 0 0) padding-box, linear-gradient(#fff 0 0);
     -webkit-mask-composite: destination-out;
     mask-composite: exclude;
+    pointer-events: none; /* ✅ add this line */
 }
+
 
 /* Ensure all text inside cards follows the theme */
 .card * {
@@ -214,12 +216,14 @@ h2 {
     padding: 0 0.25rem;
 }
 
+
 .input-icon {
     position: absolute;
     top: 50%;
     left: 0.75rem;
     transform: translateY(-50%);
     color: var(--text-primary);
+      pointer-events: none;
 }
 
 /* Symptom Grid (Dashboard Page) */
@@ -401,4 +405,87 @@ p {
     h2 {
         font-size: 1.5rem;
     }
+}
+/* Textarea styles */
+textarea.form-control {
+    resize: vertical;
+    pointer-events: auto !important;
+    user-select: text !important;
+    cursor: text !important;
+    z-index: 10 !important;
+    min-height: 100px;
+    opacity: 1 !important;
+    background-color: #fff;
+    border: 1px solid #ced4da;
+    padding: 10px;
+}
+
+textarea.form-control:focus {
+    outline: none;
+    box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
+    border-color: #80bdff;
+}
+
+/* Input fields */
+.form-control {
+    pointer-events: auto !important;
+    z-index: 10 !important;
+    opacity: 1 !important;
+}
+
+.form-control:focus {
+    outline: none;
+    box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
+    border-color: #80bdff;
+}
+
+/* Links */
+a, .login-link {
+    pointer-events: auto !important;
+    cursor: pointer !important;
+    text-decoration: underline;
+    color: #007bff !important;
+    z-index: 10 !important;
+}
+
+
+
+a:hover, .login-link:hover {
+    color: #0056b3 !important;
+    text-decoration: none;
+}
+
+/* Buttons */
+.btn {
+    pointer-events: auto !important;
+    cursor: pointer !important;
+    z-index: 10 !important;
+}
+
+/* Form container */
+.card, .mb-4 {
+    position: relative;
+    z-index: 1;
+}
+
+/* Dark theme */
+.dark-theme textarea.form-control,
+.dark-theme .form-control {
+    background-color: #2d3748 !important;
+    color: #e2e8f0 !important;
+    border-color: #4a5568 !important;
+}
+
+.dark-theme a,
+.dark-theme .login-link {
+    color: #4dabf7 !important;
+}
+
+.dark-theme a:hover,
+.dark-theme .login-link:hover {
+    color: #339af0 !important;
+}
+.login-link {
+    pointer-events: auto;
+    cursor: pointer;
 }

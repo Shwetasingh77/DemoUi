@@ -38,33 +38,8 @@
                 <div class="card p-5 animate__animated animate__fadeInUp">
                     <form id="predictionForm">
                         <div class="mb-4">
-                            <label class="form-label">Select Symptoms</label>
-                            <div class="symptom-grid">
-                                <div class="form-check">
-                                    <input class="form-check-input" type="checkbox" name="symptoms" value="fever" id="fever">
-                                    <label class="form-check-label" for="fever" data-bs-toggle="tooltip" title="High body temperature">Fever</label>
-                                </div>
-                                <div class="form-check">
-                                    <input class="form-check-input" type="checkbox" name="symptoms" value="cough" id="cough">
-                                    <label class="form-check-label" for="cough" data-bs-toggle="tooltip" title="Persistent coughing">Cough</label>
-                                </div>
-                                <div class="form-check">
-                                    <input class="form-check-input" type="checkbox" name="symptoms" value="fatigue" id="fatigue">
-                                    <label class="form-check-label" for="fatigue" data-bs-toggle="tooltip" title="Extreme tiredness">Fatigue</label>
-                                </div>
-                                <div class="form-check">
-                                    <input class="form-check-input" type="checkbox" name="symptoms" value="headache" id="headache">
-                                    <label class="form-check-label" for="headache" data-bs-toggle="tooltip" title="Pain in head">Headache</label>
-                                </div>
-                                <div class="form-check">
-                                    <input class="form-check-input" type="checkbox" name="symptoms" value="sore_throat" id="sore_throat">
-                                    <label class="form-check-label" for="sore_throat" data-bs-toggle="tooltip" title="Throat irritation">Sore Throat</label>
-                                </div>
-                                <div class="form-check">
-                                    <input class="form-check-input" type="checkbox" name="symptoms" value="shortness_of_breath" id="shortness_of_breath">
-                                    <label class="form-check-label" for="shortness_of_breath" data-bs-toggle="tooltip" title="Difficulty breathing">Shortness of Breath</label>
-                                </div>
-                            </div>
+                            <label for="symptoms" class="form-label">Describe Your Symptoms</label>
+                            <textarea class="form-control" id="symptoms" name="symptoms" rows="5" placeholder="Enter your symptoms here (e.g., fever, cough, fatigue)" data-bs-toggle="tooltip" title="Describe your symptoms in detail" tabindex="0"></textarea>
                         </div>
                         <button type="submit" class="btn btn-primary w-100">
                             <span id="predictSpinner" class="spinner-border spinner-border-sm d-none" role="status"></span>
